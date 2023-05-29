@@ -2,7 +2,7 @@ seriesOfGames(5)
 
 function seriesOfGames(numberOfGames) {
     for (let i=0; i<numberOfGames; i++) {
-        console.log(gameRound(prompt("Input, please!"), computerRoll()))
+        console.log(gameRound(playerRoll(), computerRoll()))
         }
 }
 
@@ -27,6 +27,18 @@ function gameRound(playerSelection, computerSelection) {
     }
 }
 
+function playerRoll() {
+    let promptText = prompt("Input, please!")
+    if (promptText !== null) lowerCase(promptText)
+
+    while (promptText !== "rock" && promptText !== "paper" && promptText !== "scissors") {
+        promptText = prompt("No! Wrong input!")
+        if (promptText !== null) lowerCase(promptText)
+    }
+
+    return promptText
+}
+
 function computerRoll() {
     let roll = getRandomNumber(0, 2)
 
@@ -38,3 +50,5 @@ function computerRoll() {
 function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
+
+function lowerCase(ourString) { if (ourString !== null) ourString.toLowerCase }
