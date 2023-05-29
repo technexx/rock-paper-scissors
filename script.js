@@ -1,13 +1,9 @@
-function computerRoll() {
-    let roll = getRandomNumber(0, 2)
+seriesOfGames(5)
 
-    if (roll == 0) return "rock"
-    if (roll == 1) return "paper"
-    if (roll == 2) return "scissors"
-}
-
-function getRandomNumber(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min)
+function seriesOfGames(numberOfGames) {
+    for (let i=0; i<numberOfGames; i++) {
+        console.log(gameRound(prompt("Input, please!"), computerRoll()))
+        }
 }
 
 function gameRound(playerSelection, computerSelection) {
@@ -31,4 +27,14 @@ function gameRound(playerSelection, computerSelection) {
     }
 }
 
-console.log(gameRound("rock", computerRoll()))
+function computerRoll() {
+    let roll = getRandomNumber(0, 2)
+
+    if (roll == 0) return "rock"
+    if (roll == 1) return "paper"
+    if (roll == 2) return "scissors"
+}
+
+function getRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
