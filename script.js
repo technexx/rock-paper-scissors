@@ -29,11 +29,11 @@ function gameRound(playerSelection, computerSelection) {
 
 function playerRoll() {
     let promptText = prompt("Input, please!")
-    if (promptText !== null) lowerCase(promptText)
+    lowerCase(promptText)
 
     while (promptText !== "rock" && promptText !== "paper" && promptText !== "scissors") {
         promptText = prompt("No! Wrong input!")
-        if (promptText !== null) lowerCase(promptText)
+        lowerCase(promptText)
     }
 
     return promptText
