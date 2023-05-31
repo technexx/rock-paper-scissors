@@ -1,4 +1,14 @@
-seriesOfGames(5)
+const buttons = document.querySelectorAll('button');
+
+console.log(buttons)
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        if (button.id === "b1") console.log("first button pressed!")
+        if (button.id === "b2") console.log("second button pressed!")
+        if (button.id === "b3") console.log("third button pressed!")
+    });
+});
 
 function seriesOfGames(numberOfGames) {
     for (let i=0; i<numberOfGames; i++) {
@@ -30,6 +40,8 @@ function gameRound(playerSelection, computerSelection) {
 function playerRoll() {
     let promptText = prompt("Input, please!")
     lowerCase(promptText)
+
+    if (promptText === null) return
 
     while (promptText !== "rock" && promptText !== "paper" && promptText !== "scissors") {
         promptText = prompt("No! Wrong input!")
