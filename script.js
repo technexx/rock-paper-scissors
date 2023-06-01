@@ -1,20 +1,59 @@
 const buttons = document.querySelectorAll('button');
+const playerScoreElement = document.querySelector('#player-score')
+const computerScoreElement = document.querySelector('#computer-score')
+const gameResultElement = document.querySelector('#game-result')
 
-console.log(buttons)
+let playerScoreValue = 0
+let computerScoreValue = 0
+let gameResultText = ""
+let gameCount = 0
+
+updateGameScores()
+
+function updateGameScores() {
+    playerScoreElement.textContent = "Player Score: " + playerScoreValue
+    computerScoreElement.textContent = "Computer Score: " + computerScoreValue
+    gameResultElement.textContent = gameResultText
+}
 
 buttons.forEach((button) => {
+    let winner = ""
+
     button.addEventListener('click', () => {
-        if (button.id === "b1") console.log("first button pressed!")
-        if (button.id === "b2") console.log("second button pressed!")
-        if (button.id === "b3") console.log("third button pressed!")
+        if (button.id === "b1") {
+            winner = gameRound("rock", computerRoll())
+        }
+
+        if (button.id === "b2") {
+           winner = gameRound("paper", computerRoll())
+        }
+
+        if (button.id === "b3") {
+           winner = gameRound("scissors", computerRoll())
+        }
+
+
+        if (winner == "Player Win") {
+            playerScoreValue++
+        } else if (winner == "Player Loss") {
+            computerScoreValue++
+        } else winner = "Tie!"
+    
+        gameResultText = winner
+        gameCount++
+        
+        if (playerScoreValue === 5) {
+            gameResultText += "- Player Wins It All!"
+        }
+
+        if (computerScoreValue === 5) {
+            gameResultText += "- Computer Wins It All!"
+        }
+
+        updateGameScores()
+
     });
 });
-
-function seriesOfGames(numberOfGames) {
-    for (let i=0; i<numberOfGames; i++) {
-        console.log(gameRound(playerRoll(), computerRoll()))
-        }
-}
 
 function gameRound(playerSelection, computerSelection) {
     console.log("player selection is " + playerSelection)
